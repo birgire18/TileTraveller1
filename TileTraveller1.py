@@ -7,12 +7,14 @@
 for i in range(1, 4):
     for j in range(1, 4):
         print(i,j)
-
-player_start = (1,1)
+x=1
+y=1
+player_start = (x,y)
 
 player_location = player_start
 
 
+if direction == str("n") or direction
 
 if player_location == (1,1) or player_location == (2,1):
     print("You can travel: (N)orth.")
@@ -34,6 +36,20 @@ elif player_location == (3,2):
     direction = str(input("Directions: "))
 elif player_location == (3,1):
     print("Victory!")
+    exit
+
+if direction == str("n") or direction == str("N"):
+    player_location = (x+0,y+1)
+elif direction == str("s") or direction == str("S"):
+    player_location = (x+0,y-1)
+elif direction == str("e") or direction == str("E"):
+    player_location = (x+1,y+0)
+elif direction == str("w") or direction == str("W"):
+    player_location = (x-1,y+0)
+else:
+    print("Not a valid direction!")
+    direction = str(input("Directions: "))
+
 
 
 
