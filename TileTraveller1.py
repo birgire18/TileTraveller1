@@ -1,61 +1,41 @@
-#First we create the file map from 1,1 to 3,3
+#First we create the file map from 1,1 to 3,3 by using numbers from 1 to 9 to name the tiles
 #Then make possible moves for each tile
 #Request the user for an input, wich should be a destination
 #Respond to that input.(if it is not a valid input we let the user know then we re-request an input)
-#If player reaches 3,3 we print out "victory!", and then exit the program
+#If player reaches 3,1 (tile number 7) we print out "victory!", and then exit the program
 
+player_location = 1
 
-x=1
-y=1
-player_start = (x,y)
-
-player_location = player_start
-
-while player_location != (3,1):
-    if player_location == (1,1) or player_location == (2,1):
+while player_location != 7:            # While the players location isn't on the victory tile the loop keeps going
+    t_or_f = True                       
+    if player_location == 1 or player_location == 4:            #In these if/elif sentences I'm putting an value for each tile
         print("You can travel: (N)orth.")
-        valid_direction = "n" or "N"
-        direction = str(input("Directions: "))
-    elif player_location == (1,2):
-        print("You can travel: (N)orth or (S)outh or (W)est.")
-        valid_direction = "n" or "s" or "w" or "N" or "S" or "W"
-        direction = str(input("Directions: "))
-    elif player_location == (2,2) or player_location == (3,3):
+    elif player_location == 2:
+        print("You can travel: (N)orth or (S)outh or (E)ast.")
+    elif player_location == 5 or player_location == 9:                      
         print("You can travel: (S)outh or (W)est.")
-        valid_direction = "s" or "w" or "S" or "W"
-        direction = str(input("Directions: "))
-    elif player_location == (1,3):
+    elif player_location == 3:
         print("You can travel: (S)outh or (E)ast. ")
-        valid_direction = "s" or "w" or "S" or "W"
-        direction = str(input("Directions: "))
-    elif player_location == (2,3):
+    elif player_location == 6:
         print("You can travel: (E)ast or (W)est.")
-        valid_direction = "e" or "w" or "E" or "W"
-        direction = str(input("Directions: "))
-    elif player_location == (3,2):
+    elif player_location == 8:
         print("You can travel: (N)orth or (S)outh.")
-        valid_direction = "n" or "s" or "N" or "S"
-        direction = str(input("Directions: "))
-
-    if (direction == str("n") or direction == str("N")) and (valid_direction == "n" or valid_direction == "N"):
-        player_location = (x+0,y+1)
-    elif (direction == str("s") or direction == str("S")) and (valid_direction == "s" or valid_direction == "S"):
-        player_location = (x+0,y-1)
-    elif (direction == str("e") or direction == str("E")) and (valid_direction == "e" or valid_direction == "E"):
-        player_location = (x+1,y+0)
-    elif (direction == str("w") or direction == str("W")) and (valid_direction == "w" or valid_direction == "W"):
-        player_location = (x-1,y+0)
-    else:
-        print("Not a valid direction!")
-        direction = str(input("Directions: "))
+    
+    while t_or_f:                                                          # This while loop keeps going until the player inserts a valid value
+        direction = str(input("Directions: ").lower())
+        if direction == "n" and (player_location in (1, 2, 4 , 8)):
+            player_location += 1
+        elif direction == "s" and (player_location in (2, 3, 5, 8, 9)):    
+            player_location -= 1
+        elif direction == "e" and (player_location in (2, 3, 6)):          
+            player_location += 3
+        elif direction == "w" and (player_location in (5, 6 ,9)):
+            player_location -= 3
+        else:                                                              # If the player doesn´t insert an value that goes with his tile posistion
+            print("Not a valid direction!")                                # then it will print out "Not a valid direction!" and allows him to try again
+            continue
+        t_or_f = False
+    
 else:
     print("Victory!")
     exit
-
-
-
-
-
-
-
-
