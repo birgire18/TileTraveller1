@@ -1,3 +1,4 @@
+# https://github.com/birgire18/TileTraveller1
 #First we create the file map from 1,1 to 3,3 by using numbers from 1 to 9 to name the tiles
 #Then make possible moves for each tile
 #Request the user for an input, wich should be a destination
@@ -11,18 +12,18 @@ while player_location != 7:            # While the players location isn't on the
     if player_location == 1 or player_location == 4:            #In these if/elif sentences I'm putting an value for each tile
         print("You can travel: (N)orth.")
     elif player_location == 2:
-        print("You can travel: (N)orth or (S)outh or (E)ast.")
+        print("You can travel: (N)orth or (E)ast or (S)outh.")
     elif player_location == 5 or player_location == 9:                      
         print("You can travel: (S)outh or (W)est.")
     elif player_location == 3:
-        print("You can travel: (S)outh or (E)ast. ")
+        print("You can travel: (E)ast or (S)outh.")
     elif player_location == 6:
         print("You can travel: (E)ast or (W)est.")
     elif player_location == 8:
         print("You can travel: (N)orth or (S)outh.")
     
     while t_or_f:                                                          # This while loop keeps going until the player inserts a valid value
-        direction = str(input("Directions: ").lower())
+        direction = str(input("Direction: ").lower())
         if direction == "n" and (player_location in (1, 2, 4 , 8)):
             player_location += 1
         elif direction == "s" and (player_location in (2, 3, 5, 8, 9)):    
